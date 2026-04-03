@@ -1,0 +1,8 @@
+name: github
+variables:
+  - secret: true
+    name: GITHUB_TOKEN
+  - name: BASE_URL
+    value: https://api.github.com
+  - secret: true
+    name: USERNAME

@@ -1,0 +1,16 @@
+info:
+  name: github
+  type: folder
+  seq: 1
+
+request:
+  headers:
+    - name: Accept
+      value: application/json
+    - name: Content-Type
+      value: application/json
+    - name: X-GitHub-Api-Version
+      value: 2022-11-28
+  auth:
+    type: bearer
+    token: "{{GITHUB_TOKEN}}"

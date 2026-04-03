@@ -1,0 +1,19 @@
+info:
+  name: list-repos
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{BASE_URL}}/users/{{USERNAME}}/repos?affiliation=owner"
+  params:
+    - name: affiliation
+      value: owner
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
