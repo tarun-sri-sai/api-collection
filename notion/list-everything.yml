@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: https://api.notion.com/v1/search
+  url: "{{BASE_URL}}/search"
   auth: inherit
 
 settings:
