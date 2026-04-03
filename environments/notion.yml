@@ -4,3 +4,5 @@ variables:
     name: NOTION_TOKEN
   - name: BASE_URL
     value: https://api.notion.com/v1
+  - secret: true
+    name: DATABASE_ID
