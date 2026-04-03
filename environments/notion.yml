@@ -1,0 +1,4 @@
+name: notion
+variables:
+  - secret: true
+    name: NOTION_TOKEN
