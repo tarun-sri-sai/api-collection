@@ -1,0 +1,8 @@
+name: nist
+variables:
+  - secret: true
+    name: API_KEY
+  - name: PUB_START_DATE
+    value: 2026-01-01T00:00:00.000
+  - name: PUB_END_DATE
+    value: 2026-04-13T00:00:00.000
