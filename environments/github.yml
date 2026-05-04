@@ -4,5 +4,5 @@ variables:
     name: GITHUB_TOKEN
   - name: BASE_URL
     value: https://api.github.com
-  - secret: true
-    name: USERNAME
+  - name: USERNAME
+    value: tarun-sri-sai
