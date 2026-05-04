@@ -1,0 +1,36 @@
+info:
+  name: count-commits-ql
+  type: graphql
+  seq: 3
+
+graphql:
+  method: POST
+  url: https://api.github.com/graphql
+  body:
+    query: |-
+      query($owner: String!, $name: String!, $since: GitTimestamp!) {
+        repository(owner: $owner, name: $name) {
+          defaultBranchRef {
+            target {
+              ... on Commit {
+                history(since: $since) {
+                  totalCount
+                }
+              }
+            }
+          }
+        }
+      }
+    variables: |-
+      {
+        "owner": "{{USERNAME}}",
+        "name": "{{REPO}}",
+        "since": "{{FROM_DATE}}"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
