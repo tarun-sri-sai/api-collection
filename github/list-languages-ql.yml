@@ -1,0 +1,35 @@
+info:
+  name: list-languages-ql
+  type: graphql
+  seq: 4
+
+graphql:
+  method: POST
+  url: https://api.github.com/graphql
+  body:
+    query: |-
+      query($owner: String!, $name: String!) {
+        repository(owner: $owner, name: $name) {
+          languages(first: 10, orderBy: {field: SIZE, direction: DESC}) {
+            totalSize
+            edges {
+              size
+              node {
+                name
+              }
+            }
+          }
+        }
+      }
+    variables: |-
+      {
+        "owner": "{{USERNAME}}",
+        "name": "{{REPO}}"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
