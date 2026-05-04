@@ -1,0 +1,30 @@
+info:
+  name: list-repos-ql
+  type: graphql
+  seq: 2
+
+graphql:
+  method: POST
+  url: https://api.github.com/graphql
+  body:
+    query: |-
+      query($username: String!) {
+        user(login: $username) {
+          repositories(first: 50) {
+            nodes {
+              name
+            }
+          }
+        }
+      }
+    variables: |-
+      {
+        "username": "{{USERNAME}}"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
