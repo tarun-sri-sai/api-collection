@@ -6,6 +6,9 @@ info:
 http:
   method: GET
   url: "{{BASE_URL}}/users/{{USERNAME}}/repos?affiliation=owner"
+  headers:
+    - name: X-GitHub-Api-Version
+      value: 2022-11-28
   params:
     - name: affiliation
       value: owner
