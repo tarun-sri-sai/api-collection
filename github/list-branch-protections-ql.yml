@@ -1,0 +1,57 @@
+info:
+  name: list-branch-protections-ql
+  type: graphql
+  seq: 5
+
+graphql:
+  method: POST
+  url: "{{BASE_URL}}/graphql"
+  body:
+    query: |-
+      query($owner: String!, $name: String!) {
+        repository(owner: $owner, name: $name) {
+          branchProtectionRules(first: 100) {
+            nodes {
+              allowsDeletions
+              allowsForcePushes
+              blocksCreations
+              dismissesStaleReviews
+              isAdminEnforced
+              lockAllowsFetchAndMerge
+              lockBranch
+              pattern
+              requireLastPushApproval
+              requiredApprovingReviewCount
+              requiredDeploymentEnvironments
+              requiredStatusCheckContexts
+              requiresApprovingReviews
+              requiresCodeOwnerReviews
+              requiresCommitSignatures
+              requiresConversationResolution
+              requiresDeployments
+              requiresLinearHistory
+              requiresStatusChecks
+              requiresStrictStatusChecks
+              restrictsPushes
+              restrictsReviewDismissals
+              branchProtectionRuleConflicts(first: 100) { nodes { conflictingBranchProtectionRule { pattern } } }
+              bypassForcePushAllowances(first: 100) { nodes { actor { ... on User { login } } } }
+              bypassPullRequestAllowances(first: 100) { nodes { actor { ... on User { login } } } }
+              pushAllowances(first: 100) { nodes { actor { ... on User { login } } } }
+              reviewDismissalAllowances(first: 100) { nodes { actor { ... on User { login } } } }
+            }
+          }
+        }
+      }
+    variables: |-
+      {
+        "owner": "{{USERNAME}}",
+        "name": "{{REPO}}"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
