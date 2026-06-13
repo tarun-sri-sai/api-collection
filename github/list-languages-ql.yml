@@ -5,7 +5,7 @@ info:
 
 graphql:
   method: POST
-  url: https://api.github.com/graphql
+  url: "{{BASE_URL}}/graphql"
   body:
     query: |-
       query($owner: String!, $name: String!) {
